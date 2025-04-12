@@ -6,7 +6,8 @@ import User from "../models/User.js";
 // Place Order COD : /api/order/cod
 export const placeOrderCOD = async (req, res) => {
   try {
-    const { userId, items, address } = req.body;
+    const userId = req.userId; 
+    const { items, address } = req.body;
     if (!address || items.length === 0) {
       return res.json({
         success: false,
@@ -40,7 +41,8 @@ export const placeOrderCOD = async (req, res) => {
 // Place Order Stripr : /api/order/stripe
 export const placeOrderStripe = async (req, res) => {
   try {
-    const { userId, items, address } = req.body;
+    const userId = req.userId;
+    const { items, address } = req.body;
 
     const { origin } = req.headers;
     if (!address || items.length === 0) {
